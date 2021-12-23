@@ -15,7 +15,7 @@ func main() {
 	hand.print("cards present in the hand")
 	remainingDeck.print("cards present in the remianing deck")
 
-	fmt.Println("\nloading Deck from Memory\n")
+	fmt.Println("\nloading Deck from Memory")
 	loadedDeck := readFile("MyDeck")
 	// bad file loading example
 	// loadedDeck := readFile("NonExistent")
