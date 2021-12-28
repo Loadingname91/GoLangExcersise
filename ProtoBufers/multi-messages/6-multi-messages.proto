@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+/*
+
+Person is used to represent a person across our network.
+
+*/
+
+message Person{
+    int32 age = 1; // age of the person
+    string first_name = 2; // first name of the person used in the signup form
+    string last_name = 3; // last name of the person used in the signup form
+    bytes small_picture = 4; // picture of size <= 32 whihch is a small picture of type jpeg
+    bool is_profile_verified =5; // used to check whether the profile is verfied or not
+    float height = 6; // height of the person
+
+    // used for representing lists
+    repeated string phone_number = 7; // used to store the phone numbers of the person
+
+
+    // we currently use 3 types of color and we use this field to store the color of the person
+    enum EyeColor {
+        UNKNOWN_EYE_COLOR = 0;
+        EYE_BLUE = 1;
+        EYE_GREEN = 2;
+        EYE_BROWN = 3;
+    }
+
+    EyeColor eye_color = 8;
+
+    Date birthday = 9; // birthday of the person
+
+}
+
+message Date {
+    int32 year =1;
+    int32 month =2;
+    int32 Day = 3;
+}
