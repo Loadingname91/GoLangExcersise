@@ -6,6 +6,8 @@ import (
 	"log"
 
 	simple "CodeGenGO/Example.Simple/simplepb/simple"
+	"CodeGenGO/enumeration/enumpb"
+	"CodeGenGO/example/complexMessage"
 
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
@@ -13,9 +15,52 @@ import (
 
 func main() {
 	sm := doSimple()
+
+	//Read write Demo with struct from generated proto buf
 	ReadAndWriteDemo(sm)
 
+	// Json converstion Demo with struct  from generated proto buf
 	JsonDemo(sm)
+
+	// Enum with struct from generated proto buf
+	doEnum()
+
+	// Complex message handling with struct from generated proto buf
+	doComplex()
+
+}
+
+func doComplex() {
+	cm := complexMessage.ComplexMessage{
+		OneDummy: &complexMessage.DummyMessage{
+			Id:   1,
+			Name: "First Message",
+		},
+		MultipleDummy: []*complexMessage.DummyMessage{
+			{
+				Id:   2,
+				Name: "Second Message",
+			},
+			{
+				Id:   3,
+				Name: "Third Message",
+			},
+		},
+	}
+
+	fmt.Println("data inside complex Message", cm)
+}
+
+func doEnum() {
+
+	em := enumpb.EnumMessage{
+		Id:        42,
+		DayOfWeek: enumpb.DayofWeek_MONDAY,
+	}
+
+	em.DayOfWeek = enumpb.DayofWeek_FRIDAY
+
+	fmt.Println("Data from enumeration", em)
 }
 
 func ReadAndWriteDemo(sm proto.Message) {
