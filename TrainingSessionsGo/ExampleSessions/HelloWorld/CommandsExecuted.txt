@@ -1,0 +1,7 @@
+go build hello.go
+./hello.exe // hello.exe is the name of the executable file
+
+GOARCH=amd64 GOOS=windows go build hello.go // changes the compiled code to run on windows
+
+go install // used to install any executable file at the location GOBIN directory 
+// GOBIN is a global variable that is set by go install command

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package GreetDeadline;
+
+option go_package ="Unary/GreetWithDeadline";
+
+message Greeting{
+    string first_name =1;
+    string second_name =2;
+}
+
+message GreetWithDealineRequest{
+    Greeting greeting =1;
+}
+
+message GreetWithDeadlineResponse{
+    string result =1;
+}
+
+service GreetService{
+    // Unary with Deadlines
+    rpc GreetWithDealine(GreetWithDealineRequest) returns (GreetWithDeadlineResponse) {};
+}

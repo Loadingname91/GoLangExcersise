@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package StreamGreet;
+
+option go_package ="Stream/GreetAPIManyTimes";
+
+message Greeting{
+    string first_name =1;
+    string second_name =2;
+}
+
+message GreetRequestManyTimes{
+    Greeting greeting =1;
+}
+
+message GreetResponseManyTimes{
+    string result =1;
+}
+
+
+service GreetService{
+    // Server streamming
+    rpc GreetManyTimes(GreetRequestManyTimes) returns (stream GreetResponseManyTimes) {};
+}

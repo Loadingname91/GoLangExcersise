@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package calc;
+
+option go_package = "/calculatorpb";
+
+
+
+   
+
+message CalcRequest{
+
+    int64 firstnumber = 1;
+
+    int64 secondnumber = 2;
+
+}
+
+
+
+message CalcResponse{
+
+    int64 result = 1;
+
+}
+
+
+
+service SumService{
+
+    //Unary
+
+    rpc Sum(CalcRequest) returns (CalcResponse){};
+
+}

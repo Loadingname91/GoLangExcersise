@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package StreamClient;
+
+option go_package ="/FindMaximumPb";
+
+message FindMaximumRequest {
+    int32 number = 1;
+}
+message FindMaximumResponse {
+    int32 maximum = 1;
+}
+
+service ComputedAverage{
+    // Bidrectional streamming
+    rpc FindMaximum(stream FindMaximumRequest) returns (stream FindMaximumResponse) {};
+}

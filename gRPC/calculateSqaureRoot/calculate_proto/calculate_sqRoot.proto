@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package SqaureRootPackage;
+
+option go_package = "/calculate_proto";
+
+message SquareRootRequest{
+    int32 number =1;
+}
+
+message SqaureRootResponse{
+    double result = 1;
+}
+
+
+service FindSquareRoot{
+    // Unary 
+    // Error handling
+    // This RPC will throw an expection if the sent number is negative 
+    // The error being sent is of the type INVALID_ARGUMENT 
+    rpc SqaureRoot(SquareRootRequest) returns (SqaureRootResponse){};
+}

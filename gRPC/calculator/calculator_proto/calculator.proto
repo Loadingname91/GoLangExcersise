@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package CalculatorExample;
+
+option go_package = "/calculator_proto";
+
+message calculator{
+    int32 first_number =1;
+    int32 second_numer = 2;
+}
+
+message CalculatorServerRequest{
+    calculator calculate = 1;
+}
+
+message CalculatorServerResponse{
+    int32 result_sum =1;
+}
+
+service CalculateSumService{
+    // Unary 
+    rpc calcuteSum(CalculatorServerRequest) returns (CalculatorServerResponse){};
+}

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package UnaryGreet;
+package naryGreet;
 
 option go_package ="Unary/GreetAPI";
 
@@ -19,5 +19,5 @@ message GreetResponse{
 
 service GreetService{
     // Unary
-    rpc Greet(GreetRequest) returns (GreetResponse) {}
+    rpc Greet(GreetRequest) returns (GreetResponse) {};
 }

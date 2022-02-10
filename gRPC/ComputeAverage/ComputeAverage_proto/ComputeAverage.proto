@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package StreamClient;
+
+option go_package ="/ComputeAveragePb";
+
+message NumberInput{
+    float number=1;
+}
+
+message ComputedAverageRequest{
+    NumberInput input=1;
+}
+
+message ComputedAverageResponse{
+    float result =1;
+}
+
+
+service ComputedAverage{
+    // Client streamming
+    rpc ComputeAverage(stream ComputedAverageRequest) returns (ComputedAverageResponse) {};
+}
